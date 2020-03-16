@@ -12,7 +12,7 @@ namespace OpenPose.Example {
 
         // HumanController2D prefab
         [SerializeField] GameObject humanPrefab;
-
+        [SerializeField] Camera OpenPoseCamera;
         // UI elements
         [SerializeField] RectTransform outputTransform;
         [SerializeField] ImageRenderer bgImageRenderer;
@@ -53,7 +53,7 @@ namespace OpenPose.Example {
         }
 
         // Bg image
-        public bool renderBgImg = false;
+        public bool renderBgImg = true;
         public void ToggleRenderBgImg(){
             renderBgImg = !renderBgImg;
             bgImageRenderer.FadeInOut(renderBgImg);
@@ -165,7 +165,7 @@ namespace OpenPose.Example {
 
                 // Rescale output UI
                 Vector2 outputSize = outputTransform.sizeDelta;
-                Vector2 screenSize = Camera.main.pixelRect.size;
+                Vector2 screenSize = OpenPoseCamera.pixelRect.size;
                 float scale = Mathf.Min(screenSize.x / outputSize.x, screenSize.y / outputSize.y);
                 outputTransform.localScale = new Vector3(scale, scale, scale);
 
