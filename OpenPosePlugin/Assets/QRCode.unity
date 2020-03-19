@@ -281,6 +281,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1154263075}
+    - target: {fileID: 7253304551223337764, guid: fea6a9be11b8daa4384fe73b34847721,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7253304551223337767, guid: fea6a9be11b8daa4384fe73b34847721,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -393,6 +398,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fea6a9be11b8daa4384fe73b34847721, type: 3}
+--- !u!1 &7253304551519932366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7253304551661801476, guid: fea6a9be11b8daa4384fe73b34847721,
+    type: 3}
+  m_PrefabInstance: {fileID: 7253304551519932365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7253304551519932367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7253304550738160333, guid: fea6a9be11b8daa4384fe73b34847721,
+    type: 3}
+  m_PrefabInstance: {fileID: 7253304551519932365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7253304551519932368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5524084113501363556, guid: fea6a9be11b8daa4384fe73b34847721,
+    type: 3}
+  m_PrefabInstance: {fileID: 7253304551519932365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7253304551519932369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5524084114337593598, guid: fea6a9be11b8daa4384fe73b34847721,
+    type: 3}
+  m_PrefabInstance: {fileID: 7253304551519932365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7555406270514941979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -460,5 +489,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7555406271268142167, guid: ffb74df5062dab24b8b32419d8fef110,
+        type: 3}
+      propertyPath: participanteVerde
+      value: 
+      objectReference: {fileID: 7253304551519932369}
+    - target: {fileID: 7555406271268142167, guid: ffb74df5062dab24b8b32419d8fef110,
+        type: 3}
+      propertyPath: participanteLaranja
+      value: 
+      objectReference: {fileID: 7253304551519932368}
+    - target: {fileID: 7555406271268142167, guid: ffb74df5062dab24b8b32419d8fef110,
+        type: 3}
+      propertyPath: participanteRoxo
+      value: 
+      objectReference: {fileID: 7253304551519932367}
+    - target: {fileID: 7555406271268142167, guid: ffb74df5062dab24b8b32419d8fef110,
+        type: 3}
+      propertyPath: participanteAmarelo
+      value: 
+      objectReference: {fileID: 7253304551519932366}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb74df5062dab24b8b32419d8fef110, type: 3}

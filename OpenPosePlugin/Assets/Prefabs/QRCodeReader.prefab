@@ -47,3 +47,12 @@ MonoBehaviour:
   spriteLaranja: {fileID: 21300000, guid: 7f4e67d808b646d44ada6acd01575364, type: 3}
   spriteAmarelo: {fileID: 21300000, guid: 5e0710d07f104884586b4c98e1736fae, type: 3}
   spriteRoxo: {fileID: 21300000, guid: c594182b89eb80446a62eb9fcd1ad9c4, type: 3}
+  participanteVerde: {fileID: 0}
+  participanteLaranja: {fileID: 0}
+  participanteRoxo: {fileID: 0}
+  participanteAmarelo: {fileID: 0}
+  verdeTimmingOut: 0
+  laranjaTimmingOut: 0
+  amareloTimmingOut: 0
+  roxoTimmingOut: 0
+  timeOutLimit: 5

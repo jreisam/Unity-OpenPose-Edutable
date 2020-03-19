@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4780324044323833793}
   - component: {fileID: 4780324044323833792}
   - component: {fileID: 4218679068352884577}
+  - component: {fileID: 376956405}
   m_Layer: 0
   m_Name: EBLOCKS_CONNECT_AND_LISTEN
   m_TagString: Untagged
@@ -41,7 +42,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4780324044323833806}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a523014bece91c949b0ca34baebb94a4, type: 3}
   m_Name: 
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4780324044323833806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da418f3281de1d045be7e1d91970c5b8, type: 3}
   m_Name: 
@@ -77,11 +78,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4780324044323833806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 084af37a95b32ee47a93a19c4951cc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serverUrl: http://localhost:3005
+  socket: {fileID: 0}
+--- !u!114 &376956405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4780324044323833806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e897b5b207b18964ca9c6dd9b8ecca8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 1
 --- !u!1 &4780324044804056525
 GameObject:
   m_ObjectHideFlags: 0
