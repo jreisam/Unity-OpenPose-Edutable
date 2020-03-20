@@ -14,6 +14,8 @@ namespace Sample
             [SerializeField]
             public int Id { get; set; }
             [SerializeField]
+            public string HeroName { get; set; }
+            [SerializeField]
             public string Cor { get; set; }
             [SerializeField]
             public double TimeOutoFSign { get; set; }
