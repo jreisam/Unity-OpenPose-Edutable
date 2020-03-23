@@ -48,7 +48,7 @@ MonoBehaviour:
     disableModelExtraction: 0
   videoBackground:
     clippingMode: 0
-    numDivisions: 2
+    numDivisions: 4
     videoBackgroundShader: {fileID: 4800000, guid: f40623b353e2f1943b1b3ba42975db7a,
       type: 3}
     matteShader: {fileID: 4800000, guid: 66d0d78a3000021448b598bb54a3bfdf, type: 3}

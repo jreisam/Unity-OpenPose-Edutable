@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="hero06" size="4.000000 4.000000" />
-    <ImageTarget name="hero05" size="4.000000 4.000000" />
-    <ImageTarget name="hero04" size="4.000000 4.000000" />
-    <ImageTarget name="hero03" size="4.000000 4.000000" />
-    <ImageTarget name="hero02" size="4.000000 4.000000" />
-    <ImageTarget name="hero01" size="4.000000 4.000000" />
-    <ImageTarget name="icone04" size="5.000000 5.000000" />
-    <ImageTarget name="icone03" size="5.000000 5.000000" />
-    <ImageTarget name="icone02" size="5.000000 5.000000" />
-    <ImageTarget name="icone01" size="5.000000 5.000000" />
-    <ImageTarget name="bone2" size="5.000000 3.750000" />
-    <ImageTarget name="bone1" size="5.000000 3.750000" />
-    <ImageTarget name="gracom" size="6.000000 12.979591" />
-    <ImageTarget name="3x4" size="6.000000 10.280254" />
+    <ImageTarget name="jujuba4" size="6.000000 6.000000" />
+    <ImageTarget name="fogo1" size="6.000000 6.000000" />
+    <ImageTarget name="finn" size="6.000000 6.000000" />
+    <ImageTarget name="beemo" size="6.000000 6.000000" />
+    <ImageTarget name="jake" size="6.000000 6.000000" />
   </Tracking>
 </QCARConfig>

@@ -11,45 +11,35 @@ using ZXing.QrCode;
 
 public class VuforiaReader : MonoBehaviour
 {
+    public GameObject numParticipantesUI;
+
     public Sprite spriteHero01;
     public Sprite spriteHero02;
     public Sprite spriteHero03;
     public Sprite spriteHero04;
-    public Sprite spriteHero05;
-    public Sprite spriteHero06;
     public GameObject part01;
     public GameObject part02;
     public GameObject part03;
     public GameObject part04;
-    public GameObject part05;
-    public GameObject part06;
 
-    public GameObject avatarHero01;
-    public GameObject avatarHero02;
-    public GameObject avatarHero03;
-    public GameObject avatarHero04;
-    public GameObject avatarHero05;
-    public GameObject avatarHero06;
+    public GameObject avatar01;
+    public GameObject avatar02;
+    public GameObject avatar03;
+    public GameObject avatar04;
 
     private int numeroParticipantes = -1;
     private bool part1set = false;
     private bool part2set = false;
     private bool part3set = false;
     private bool part4set = false;
-    private bool part5set = false;
-    private bool part6set = false;
-    private bool lendoHero01 = false;
-    private bool lendoHero02 = false;
-    private bool lendoHero03 = false;
-    private bool lendoHero04 = false;
-    private bool lendoHero05 = false;
-    private bool lendoHero06 = false;
-    public float hero01TimmingOut = 0f;
-    public float hero02TimmingOut = 0f;
-    public float hero03TimmingOut = 0f;
-    public float hero04TimmingOut = 0f;
-    public float hero05TimmingOut = 0f;
-    public float hero06TimmingOut = 0f;
+    private bool lendo01 = false;
+    private bool lendo02 = false;
+    private bool lendo03 = false;
+    private bool lendo04 = false;
+    public float part01TimmingOut = 0f;
+    public float part02TimmingOut = 0f;
+    public float part03TimmingOut = 0f;
+    public float part04TimmingOut = 0f;
     public float timeOutLimit = 5f;
     private float nextCheck = 0f;
     private float coolDownTime = 1f;
@@ -67,136 +57,134 @@ public class VuforiaReader : MonoBehaviour
     private void Update()
     {
         // Reader
-        lendoHero01 = avatarHero01.GetComponent<MeshRenderer>().enabled ? true :false;
-        lendoHero02 = avatarHero02.GetComponent<MeshRenderer>().enabled ? true : false;
-        lendoHero03 = avatarHero03.GetComponent<MeshRenderer>().enabled ? true : false;
-        lendoHero04 = avatarHero04.GetComponent<MeshRenderer>().enabled ? true : false;
-        lendoHero05 = avatarHero05.GetComponent<MeshRenderer>().enabled ? true : false;
-        lendoHero06 = avatarHero06.GetComponent<MeshRenderer>().enabled ? true : false;
-
+        lendo01 = avatar01.GetComponent<MeshRenderer>().enabled ? true : false;
+        lendo02 = avatar02.GetComponent<MeshRenderer>().enabled ? true : false;
+        lendo03 = avatar03.GetComponent<MeshRenderer>().enabled ? true : false;
+        lendo04 = avatar04.GetComponent<MeshRenderer>().enabled ? true : false;
 
 
         // timmers
-        hero01TimmingOut += 1f * Time.deltaTime;
-        hero02TimmingOut += 1f * Time.deltaTime;
-        hero03TimmingOut += 1f * Time.deltaTime;
-        hero04TimmingOut += 1f * Time.deltaTime;
-        hero05TimmingOut += 1f * Time.deltaTime;
-        hero06TimmingOut += 1f * Time.deltaTime;
+        part01TimmingOut += 1f * Time.deltaTime;
+        part02TimmingOut += 1f * Time.deltaTime;
+        part03TimmingOut += 1f * Time.deltaTime;
+        part04TimmingOut += 1f * Time.deltaTime;
 
 
         try
         {
-            // N# participantes 
-            numeroParticipantes = Convert.ToInt32(GameObject.Find("People").GetComponent<Text>().text.Remove(0, 7));
-            Debug.Log(numeroParticipantes);
 
             if (part1set == true)
             {
-                if (hero01TimmingOut >= timeOutLimit)
+                if (part01TimmingOut >= timeOutLimit)
                     part01.GetComponentInChildren<Text>().color = new Color(255, 0, 0);
                 else
                 {
                     part01.GetComponentInChildren<Text>().color = new Color(255, 255, 255);
                 }
 
-                part01.GetComponentInChildren<Text>().text = hero01TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.Cor == "green").FirstOrDefault().TimeOutoFSign = hero01TimmingOut;
+                part01.GetComponentInChildren<Text>().text = part01TimmingOut.ToString("F2");
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "hero01").FirstOrDefault().TimeOutoFSign = part01TimmingOut;
             }
 
             if (part2set == true)
             {
-                if (hero02TimmingOut >= timeOutLimit)
+                if (part02TimmingOut >= timeOutLimit)
                     part02.GetComponentInChildren<Text>().color = new Color(255, 0, 0);
                 else
                 {
                     part02.GetComponentInChildren<Text>().color = new Color(255, 255, 255);
                 }
 
-                part02.GetComponentInChildren<Text>().text = hero02TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.Cor == "orange").FirstOrDefault().TimeOutoFSign = hero02TimmingOut;
+                part02.GetComponentInChildren<Text>().text = part02TimmingOut.ToString("F2");
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "hero02").FirstOrDefault().TimeOutoFSign = part02TimmingOut;
             }
 
             if (part3set == true)
             {
-                if (hero04TimmingOut >= timeOutLimit)
+                if (part04TimmingOut >= timeOutLimit)
                     part03.GetComponentInChildren<Text>().color = new Color(255, 0, 0);
                 else
                 {
                     part03.GetComponentInChildren<Text>().color = new Color(255, 255, 255);
                 }
 
-                part03.GetComponentInChildren<Text>().text = hero04TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.Cor == "violet").FirstOrDefault().TimeOutoFSign = hero04TimmingOut;
+                part03.GetComponentInChildren<Text>().text = part04TimmingOut.ToString("F2");
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "hero03").FirstOrDefault().TimeOutoFSign = part04TimmingOut;
             }
 
             if (part4set == true)
             {
-                if (hero03TimmingOut >= timeOutLimit)
+                if (part03TimmingOut >= timeOutLimit)
                     part04.GetComponentInChildren<Text>().color = new Color(255, 0, 0);
                 else
                 {
                     part04.GetComponentInChildren<Text>().color = new Color(255, 255, 255);
                 }
 
-                part04.GetComponentInChildren<Text>().text = hero03TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.Cor == "yellow").FirstOrDefault().TimeOutoFSign = hero03TimmingOut;
+                part04.GetComponentInChildren<Text>().text = part03TimmingOut.ToString("F2");
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "hero04").FirstOrDefault().TimeOutoFSign = part03TimmingOut;
             }
 
-            if (lendoHero01)
+            if (lendo01)
             {
-                hero01TimmingOut = 0;
-                if (part1set == true)
-                    return;
-                participantesIdentificados++;
-                part01.GetComponent<Image>().sprite = spriteHero01;
-                ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, Cor = "green", TimeOutoFSign = hero01TimmingOut });
-                part01.GetComponent<Image>().enabled = part1set = true;
+                part01TimmingOut = 0;
+                if (part1set != true)
+                {
+                    participantesIdentificados++;
+                    part01.GetComponent<Image>().sprite = spriteHero01;
+                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, HeroName = "hero01", TimeOutoFSign = part01TimmingOut });
+                    part01.GetComponent<Image>().enabled = part1set = true;
+                }
             }
-            if (lendoHero02)
+            if (lendo02)
             {
-                hero02TimmingOut = 0;
-                if (part2set == true)
-                    return;
-                participantesIdentificados++;
-                part02.GetComponent<Image>().sprite = spriteHero02;
-                ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, Cor = "orange", TimeOutoFSign = hero02TimmingOut });
-                part02.GetComponent<Image>().enabled = part2set = true;
+                part02TimmingOut = 0;
+                if (part2set != true)
+                {
+                    participantesIdentificados++;
+                    part02.GetComponent<Image>().sprite = spriteHero02;
+                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, HeroName = "hero02", TimeOutoFSign = part02TimmingOut });
+                    part02.GetComponent<Image>().enabled = part2set = true;
+                }
             }
-            if (lendoHero03)
+            if (lendo03)
             {
-                hero04TimmingOut = 0;
-                if (part3set == true)
-                    return;
-                participantesIdentificados++;
-                part03.GetComponent<Image>().sprite = spriteHero04;
-                ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, Cor = "violet", TimeOutoFSign = hero04TimmingOut });
-                part03.GetComponent<Image>().enabled = part3set = true;
+                part04TimmingOut = 0;
+                if (part3set != true)
+                {
+                    participantesIdentificados++;
+                    part03.GetComponent<Image>().sprite = spriteHero04;
+                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, HeroName = "hero03", TimeOutoFSign = part04TimmingOut });
+                    part03.GetComponent<Image>().enabled = part3set = true;
+                }
             }
 
-            if (lendoHero04)
+            if (lendo04)
             {
-                hero03TimmingOut = 0;
-                if (part4set == true)
-                    return;
-                participantesIdentificados++;
-                part04.GetComponent<Image>().sprite = spriteHero03;
-                ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, Cor = "yellow", TimeOutoFSign = hero03TimmingOut });
-                part04.GetComponent<Image>().enabled = part4set = true;
+                part03TimmingOut = 0;
+                if (part4set != true)
+                {
+                    participantesIdentificados++;
+                    part04.GetComponent<Image>().sprite = spriteHero03;
+                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, HeroName = "hero04", TimeOutoFSign = part03TimmingOut });
+                    part04.GetComponent<Image>().enabled = part4set = true;
+                }
             }
 
+            // # InSign
+            ListaParticipantes.InSign = ListaParticipantes.Propriedades.Where(x => x.TimeOutoFSign < 1.0).Count();
+            numParticipantesUI.GetComponent<Text>().text = ListaParticipantes.InSign.ToString();
+            Debug.Log("insign: " + ListaParticipantes.InSign);
 
-            ListaParticipantes.InSign = numeroParticipantes;
-
-
-            nextCheck = Time.time + coolDownTime;
         }
         catch (Exception ex) { Debug.LogWarning(ex.Message); }
 
+        // Enviando para frontEnd
         if (Time.time > nextCheck)
-        {               // Enviando para frontEnd
+        {
             var jsonJsonsoft = JsonConvert.SerializeObject(ListaParticipantes);
             Connect.Instance.socket.EmitJson("unity", jsonJsonsoft);
+            nextCheck = Time.time + coolDownTime;
         }
     }
 
