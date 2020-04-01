@@ -42,7 +42,8 @@ public class VuforiaReader : MonoBehaviour
     public float part04TimmingOut = 0f;
     public float timeOutLimit = 5f;
     private float nextCheck = 0f;
-    private float coolDownTime = 1f;
+    public float coolDownTime = 5f;
+    public float StatueTime = 0.1f;
 
     private UnityPack ListaParticipantes = new UnityPack();
     private int participantesIdentificados = 0;
@@ -79,11 +80,25 @@ public class VuforiaReader : MonoBehaviour
                     part01.GetComponentInChildren<Text>().color = new Color(255, 0, 0);
                 else
                 {
-                    part01.GetComponentInChildren<Text>().color = new Color(255, 255, 255);
+                    part01.GetComponentInChildren<Text>().color = new Color(0, 255, 0);
                 }
 
                 part01.GetComponentInChildren<Text>().text = part01TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "hero01").FirstOrDefault().TimeOutoFSign = part01TimmingOut;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().TimeOutoFSign = part01TimmingOut;
+
+                // set isIdle
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().LastPosition =
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().CurrentPosition;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().CurrentPosition =
+                avatar01.transform.position;
+                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().LastPosition, avatar01.transform.position);
+                if (distance != 0)
+                    if (distance > StatueTime)
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().IsIdle = false;
+                    else
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().IsIdle = true;
+
+
             }
 
             if (part2set == true)
@@ -92,11 +107,22 @@ public class VuforiaReader : MonoBehaviour
                     part02.GetComponentInChildren<Text>().color = new Color(255, 0, 0);
                 else
                 {
-                    part02.GetComponentInChildren<Text>().color = new Color(255, 255, 255);
+                    part02.GetComponentInChildren<Text>().color = new Color(0, 255, 0);
                 }
 
                 part02.GetComponentInChildren<Text>().text = part02TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "hero02").FirstOrDefault().TimeOutoFSign = part02TimmingOut;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().TimeOutoFSign = part02TimmingOut;
+                // set isIdle
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().LastPosition =
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().CurrentPosition;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().CurrentPosition =
+                avatar01.transform.position;
+                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().LastPosition, avatar01.transform.position);
+                if (distance != 0)
+                    if (distance > StatueTime)
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().IsIdle = false;
+                    else
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().IsIdle = true;
             }
 
             if (part3set == true)
@@ -105,11 +131,22 @@ public class VuforiaReader : MonoBehaviour
                     part03.GetComponentInChildren<Text>().color = new Color(255, 0, 0);
                 else
                 {
-                    part03.GetComponentInChildren<Text>().color = new Color(255, 255, 255);
+                    part03.GetComponentInChildren<Text>().color = new Color(0, 255, 0);
                 }
 
                 part03.GetComponentInChildren<Text>().text = part04TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "hero03").FirstOrDefault().TimeOutoFSign = part04TimmingOut;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().TimeOutoFSign = part04TimmingOut;
+                // set isIdle
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().LastPosition =
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().CurrentPosition;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().CurrentPosition =
+                avatar01.transform.position;
+                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().LastPosition, avatar01.transform.position);
+                if (distance != 0)
+                    if (distance > StatueTime)
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().IsIdle = false;
+                    else
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().IsIdle = true;
             }
 
             if (part4set == true)
@@ -118,11 +155,22 @@ public class VuforiaReader : MonoBehaviour
                     part04.GetComponentInChildren<Text>().color = new Color(255, 0, 0);
                 else
                 {
-                    part04.GetComponentInChildren<Text>().color = new Color(255, 255, 255);
+                    part04.GetComponentInChildren<Text>().color = new Color(0, 255, 0);
                 }
 
                 part04.GetComponentInChildren<Text>().text = part03TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "hero04").FirstOrDefault().TimeOutoFSign = part03TimmingOut;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().TimeOutoFSign = part03TimmingOut;
+                // set isIdle
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().LastPosition =
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().CurrentPosition;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().CurrentPosition =
+                avatar01.transform.position;
+                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().LastPosition, avatar01.transform.position);
+                if (distance != 0)
+                    if (distance > StatueTime)
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().IsIdle = false;
+                    else
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().IsIdle = true;
             }
 
             if (lendo01)
@@ -132,7 +180,17 @@ public class VuforiaReader : MonoBehaviour
                 {
                     participantesIdentificados++;
                     part01.GetComponent<Image>().sprite = spriteHero01;
-                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, HeroName = "hero01", TimeOutoFSign = part01TimmingOut });
+                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades
+                    {
+                        Id = participantesIdentificados,
+                        HeroName = "unityRabbit",
+                        Cor = "violet",
+                        TimeOutoFSign = part01TimmingOut,
+                        SeeYouPhrase = "um coelhinho",
+                        ICanSeeYouPhrase = "Estou vendo um coelhinho",
+                        LastPosition = avatar01.transform.position,
+                        CurrentPosition = avatar01.transform.position
+                    });
                     part01.GetComponent<Image>().enabled = part1set = true;
                 }
             }
@@ -143,7 +201,17 @@ public class VuforiaReader : MonoBehaviour
                 {
                     participantesIdentificados++;
                     part02.GetComponent<Image>().sprite = spriteHero02;
-                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, HeroName = "hero02", TimeOutoFSign = part02TimmingOut });
+                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades
+                    {
+                        Id = participantesIdentificados,
+                        HeroName = "unityDog",
+                        Cor = "green",
+                        TimeOutoFSign = part02TimmingOut,
+                        SeeYouPhrase = "um cachorrinho",
+                        ICanSeeYouPhrase = "Estou vendo um cachorrinho",
+                        LastPosition = avatar01.transform.position,
+                        CurrentPosition = avatar01.transform.position
+                    });
                     part02.GetComponent<Image>().enabled = part2set = true;
                 }
             }
@@ -153,8 +221,18 @@ public class VuforiaReader : MonoBehaviour
                 if (part3set != true)
                 {
                     participantesIdentificados++;
-                    part03.GetComponent<Image>().sprite = spriteHero04;
-                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, HeroName = "hero03", TimeOutoFSign = part04TimmingOut });
+                    part03.GetComponent<Image>().sprite = spriteHero03;
+                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades
+                    {
+                        Id = participantesIdentificados,
+                        HeroName = "unityMonkey",
+                        Cor = "salmon",
+                        TimeOutoFSign = part04TimmingOut,
+                        SeeYouPhrase = "um macaquinho",
+                        ICanSeeYouPhrase = "Estou vendo um macaquinho",
+                        LastPosition = avatar01.transform.position,
+                        CurrentPosition = avatar01.transform.position
+                    });
                     part03.GetComponent<Image>().enabled = part3set = true;
                 }
             }
@@ -165,8 +243,18 @@ public class VuforiaReader : MonoBehaviour
                 if (part4set != true)
                 {
                     participantesIdentificados++;
-                    part04.GetComponent<Image>().sprite = spriteHero03;
-                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades { Id = participantesIdentificados, HeroName = "hero04", TimeOutoFSign = part03TimmingOut });
+                    part04.GetComponent<Image>().sprite = spriteHero04;
+                    ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades
+                    {
+                        Id = participantesIdentificados,
+                        HeroName = "unityCat",
+                        Cor = "yellow",
+                        TimeOutoFSign = part03TimmingOut,
+                        SeeYouPhrase = "um gatinho",
+                        ICanSeeYouPhrase = "Estou vendo um gatinho",
+                        LastPosition = avatar01.transform.position,
+                        CurrentPosition = avatar01.transform.position
+                    });
                     part04.GetComponent<Image>().enabled = part4set = true;
                 }
             }
@@ -182,12 +270,43 @@ public class VuforiaReader : MonoBehaviour
         // Enviando para frontEnd
         if (Time.time > nextCheck)
         {
+            // out of sign report
+            string fraseAlguemSaiuDaCamera = "Está difícil ver todos vocês. Vamos ver se estão todos aquí? Cheguem mais perto.";
+            string fraseTotal = MontaFraseTotal(ListaParticipantes.Propriedades);
+            ListaParticipantes.ICanSeeYouPhraseTotal = fraseTotal;
+            if (ListaParticipantes.Propriedades.Where(x => x.TimeOutoFSign > timeOutLimit).Count() > 0)
+                ListaParticipantes.SomeoneIsOutOfFramePhraseTotal = fraseAlguemSaiuDaCamera;
+            else
+                ListaParticipantes.SomeoneIsOutOfFramePhraseTotal = "";
+
+            // all of them is idle report
+            if (ListaParticipantes.Propriedades.Where(x => x.IsIdle).Count() == ListaParticipantes.Propriedades.Count() && ListaParticipantes.InSign == ListaParticipantes.Propriedades.Count() && ListaParticipantes.InSign > 0)
+                ListaParticipantes.AllOfThemIsIdlePhraseTotal = "Muito bem!! todos estátuas!";
+            else
+                ListaParticipantes.AllOfThemIsIdlePhraseTotal = "";
+
             var jsonJsonsoft = JsonConvert.SerializeObject(ListaParticipantes);
             Connect.Instance.socket.EmitJson("unity", jsonJsonsoft);
             nextCheck = Time.time + coolDownTime;
         }
     }
 
+    private string MontaFraseTotal(List<UnityPack.PartPropriedades> listaPartPropriedades)
+    {
+        string fraseTotal = "";
+        int tamanho = listaPartPropriedades.Count();
+        if (tamanho > 0)
+        {
+            fraseTotal = listaPartPropriedades[0].ICanSeeYouPhrase;
+            if (tamanho > 1)
+                fraseTotal = fraseTotal + ", " + listaPartPropriedades[1].SeeYouPhrase;
+            if (tamanho > 2)
+                fraseTotal = fraseTotal + ", " + listaPartPropriedades[2].SeeYouPhrase;
+            if (tamanho > 3)
+                fraseTotal = fraseTotal + ", e " + listaPartPropriedades[3].SeeYouPhrase;
+        }
+        return fraseTotal;
+    }
     private static Color32[] Encode(string textForEncoding, int width, int height)
     {
         var writer = new BarcodeWriter
@@ -211,5 +330,15 @@ public class VuforiaReader : MonoBehaviour
         return encoded;
     }
 
+}
 
+class XYZ
+{
+    private int x;
+    private int y;
+    private int z;
+
+    public int X { get => x; set => x = value; }
+    public int Y { get => y; set => y = value; }
+    public int Z { get => z; set => z = value; }
 }

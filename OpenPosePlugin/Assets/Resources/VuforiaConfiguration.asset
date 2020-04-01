@@ -66,6 +66,6 @@ MonoBehaviour:
     autoInitTracker: 0
     autoStartTracker: 0
   webcam:
-    deviceNameSetInEditor: eFace 2050AF
+    deviceNameSetInEditor: Chicony USB2.0 Camera
     turnOffWebCam: 0
     renderTextureLayer: 30

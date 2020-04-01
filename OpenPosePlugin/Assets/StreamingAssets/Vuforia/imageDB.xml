@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="jujuba4" size="6.000000 6.000000" />
-    <ImageTarget name="fogo1" size="6.000000 6.000000" />
-    <ImageTarget name="finn" size="6.000000 6.000000" />
-    <ImageTarget name="beemo" size="6.000000 6.000000" />
-    <ImageTarget name="jake" size="6.000000 6.000000" />
+    <ImageTarget name="rabbit02ok" size="6.000000 6.277020" />
+    <ImageTarget name="dog" size="6.000000 8.500000" />
+    <ImageTarget name="monkey" size="6.000000 5.154000" />
+    <ImageTarget name="cat" size="6.000000 6.844394" />
   </Tracking>
 </QCARConfig>
