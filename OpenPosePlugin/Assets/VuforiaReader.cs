@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Sample;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,10 +21,10 @@ public class VuforiaReader : MonoBehaviour
     public GameObject part03;
     public GameObject part04;
 
-    public GameObject avatar01;
-    public GameObject avatar02;
-    public GameObject avatar03;
-    public GameObject avatar04;
+    public GameObject targetAvatar01;
+    public GameObject targetAvatar02;
+    public GameObject targetAvatar03;
+    public GameObject targetAvatar04;
 
     private int numeroParticipantes = -1;
     private bool part1set = false;
@@ -50,6 +49,7 @@ public class VuforiaReader : MonoBehaviour
 
     void Start()
     {
+
         WebCamDevice[] devices = WebCamTexture.devices;
         for (int i = 0; i < devices.Length; i++)
             Debug.Log(devices[i].name);
@@ -58,10 +58,10 @@ public class VuforiaReader : MonoBehaviour
     private void Update()
     {
         // Reader
-        lendo01 = avatar01.GetComponent<MeshRenderer>().enabled ? true : false;
-        lendo02 = avatar02.GetComponent<MeshRenderer>().enabled ? true : false;
-        lendo03 = avatar03.GetComponent<MeshRenderer>().enabled ? true : false;
-        lendo04 = avatar04.GetComponent<MeshRenderer>().enabled ? true : false;
+        lendo01 = targetAvatar01.activeSelf ? true : false;
+        lendo02 = targetAvatar02.activeSelf ? true : false;
+        lendo03 = targetAvatar03.activeSelf ? true : false;
+        lendo04 = targetAvatar04.activeSelf ? true : false;
 
 
         // timmers
@@ -84,19 +84,19 @@ public class VuforiaReader : MonoBehaviour
                 }
 
                 part01.GetComponentInChildren<Text>().text = part01TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().TimeOutoFSign = part01TimmingOut;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().TimeOutoFSign = part01TimmingOut;
 
                 // set isIdle
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().LastPosition =
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().CurrentPosition;
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().CurrentPosition =
-                avatar01.transform.position;
-                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().LastPosition, avatar01.transform.position);
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().LastPosition =
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().CurrentPosition;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().CurrentPosition =
+                targetAvatar01.transform.position;
+                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().LastPosition, targetAvatar01.transform.position);
                 if (distance != 0)
                     if (distance > StatueTime)
-                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().IsIdle = false;
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().IsIdle = false;
                     else
-                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().IsIdle = true;
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().IsIdle = true;
 
 
             }
@@ -111,18 +111,18 @@ public class VuforiaReader : MonoBehaviour
                 }
 
                 part02.GetComponentInChildren<Text>().text = part02TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().TimeOutoFSign = part02TimmingOut;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().TimeOutoFSign = part02TimmingOut;
                 // set isIdle
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().LastPosition =
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().CurrentPosition;
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().CurrentPosition =
-                avatar01.transform.position;
-                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().LastPosition, avatar01.transform.position);
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().LastPosition =
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().CurrentPosition;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().CurrentPosition =
+                targetAvatar01.transform.position;
+                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().LastPosition, targetAvatar01.transform.position);
                 if (distance != 0)
                     if (distance > StatueTime)
-                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().IsIdle = false;
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().IsIdle = false;
                     else
-                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityDog").FirstOrDefault().IsIdle = true;
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().IsIdle = true;
             }
 
             if (part3set == true)
@@ -140,8 +140,8 @@ public class VuforiaReader : MonoBehaviour
                 ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().LastPosition =
                 ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().CurrentPosition;
                 ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().CurrentPosition =
-                avatar01.transform.position;
-                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().LastPosition, avatar01.transform.position);
+                targetAvatar01.transform.position;
+                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().LastPosition, targetAvatar01.transform.position);
                 if (distance != 0)
                     if (distance > StatueTime)
                         ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityMonkey").FirstOrDefault().IsIdle = false;
@@ -159,18 +159,18 @@ public class VuforiaReader : MonoBehaviour
                 }
 
                 part04.GetComponentInChildren<Text>().text = part03TimmingOut.ToString("F2");
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().TimeOutoFSign = part03TimmingOut;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().TimeOutoFSign = part03TimmingOut;
                 // set isIdle
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().LastPosition =
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().CurrentPosition;
-                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().CurrentPosition =
-                avatar01.transform.position;
-                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().LastPosition, avatar01.transform.position);
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().LastPosition =
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().CurrentPosition;
+                ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().CurrentPosition =
+                targetAvatar01.transform.position;
+                float distance = Vector3.Distance(ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().LastPosition, targetAvatar01.transform.position);
                 if (distance != 0)
                     if (distance > StatueTime)
-                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().IsIdle = false;
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().IsIdle = false;
                     else
-                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityCat").FirstOrDefault().IsIdle = true;
+                        ListaParticipantes.Propriedades.Where(x => x.HeroName == "unityRabbit").FirstOrDefault().IsIdle = true;
             }
 
             if (lendo01)
@@ -183,13 +183,13 @@ public class VuforiaReader : MonoBehaviour
                     ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades
                     {
                         Id = participantesIdentificados,
-                        HeroName = "unityRabbit",
+                        HeroName = "unityDog",
                         Cor = "violet",
                         TimeOutoFSign = part01TimmingOut,
-                        SeeYouPhrase = "um coelhinho",
-                        ICanSeeYouPhrase = "Estou vendo um coelhinho",
-                        LastPosition = avatar01.transform.position,
-                        CurrentPosition = avatar01.transform.position
+                        SeeYouPhrase = "um cachorrinho",
+                        ICanSeeYouPhrase = "Estou vendo um cachorrinho",
+                        LastPosition = targetAvatar01.transform.position,
+                        CurrentPosition = targetAvatar01.transform.position
                     });
                     part01.GetComponent<Image>().enabled = part1set = true;
                 }
@@ -204,13 +204,13 @@ public class VuforiaReader : MonoBehaviour
                     ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades
                     {
                         Id = participantesIdentificados,
-                        HeroName = "unityDog",
+                        HeroName = "unityCat",
                         Cor = "green",
                         TimeOutoFSign = part02TimmingOut,
-                        SeeYouPhrase = "um cachorrinho",
-                        ICanSeeYouPhrase = "Estou vendo um cachorrinho",
-                        LastPosition = avatar01.transform.position,
-                        CurrentPosition = avatar01.transform.position
+                        SeeYouPhrase = "um gatinho",
+                        ICanSeeYouPhrase = "Estou vendo um gatinho",
+                        LastPosition = targetAvatar01.transform.position,
+                        CurrentPosition = targetAvatar01.transform.position
                     });
                     part02.GetComponent<Image>().enabled = part2set = true;
                 }
@@ -230,8 +230,8 @@ public class VuforiaReader : MonoBehaviour
                         TimeOutoFSign = part04TimmingOut,
                         SeeYouPhrase = "um macaquinho",
                         ICanSeeYouPhrase = "Estou vendo um macaquinho",
-                        LastPosition = avatar01.transform.position,
-                        CurrentPosition = avatar01.transform.position
+                        LastPosition = targetAvatar01.transform.position,
+                        CurrentPosition = targetAvatar01.transform.position
                     });
                     part03.GetComponent<Image>().enabled = part3set = true;
                 }
@@ -247,13 +247,13 @@ public class VuforiaReader : MonoBehaviour
                     ListaParticipantes.Propriedades.Add(new UnityPack.PartPropriedades
                     {
                         Id = participantesIdentificados,
-                        HeroName = "unityCat",
+                        HeroName = "unityRabbit",
                         Cor = "yellow",
                         TimeOutoFSign = part03TimmingOut,
-                        SeeYouPhrase = "um gatinho",
-                        ICanSeeYouPhrase = "Estou vendo um gatinho",
-                        LastPosition = avatar01.transform.position,
-                        CurrentPosition = avatar01.transform.position
+                        SeeYouPhrase = "um coelhinho",
+                        ICanSeeYouPhrase = "Estou vendo um coelhinho",
+                        LastPosition = targetAvatar01.transform.position,
+                        CurrentPosition = targetAvatar01.transform.position
                     });
                     part04.GetComponent<Image>().enabled = part4set = true;
                 }
@@ -307,6 +307,8 @@ public class VuforiaReader : MonoBehaviour
         }
         return fraseTotal;
     }
+
+    // QRcode utils
     private static Color32[] Encode(string textForEncoding, int width, int height)
     {
         var writer = new BarcodeWriter
@@ -320,7 +322,6 @@ public class VuforiaReader : MonoBehaviour
         };
         return writer.Write(textForEncoding);
     }
-
     public Texture2D generateQR(string text)
     {
         var encoded = new Texture2D(256, 256);
@@ -332,13 +333,3 @@ public class VuforiaReader : MonoBehaviour
 
 }
 
-class XYZ
-{
-    private int x;
-    private int y;
-    private int z;
-
-    public int X { get => x; set => x = value; }
-    public int Y { get => y; set => y = value; }
-    public int Z { get => z; set => z = value; }
-}
